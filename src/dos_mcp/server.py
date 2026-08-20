@@ -20,6 +20,7 @@ from .tools import (
     save_state,
     send_keys,
     status,
+    swap_floppy,
     type_text,
 )
 
@@ -53,6 +54,12 @@ def create_server(settings: Settings, client: QmpClient | None = None) -> FastMC
         """Reset the DOS guest, optionally without a full machine reset."""
 
         return await asyncio.to_thread(reset, qmp, dos_only=dos_only)
+
+    @server.tool()
+    async def dosbox_swap_floppy(drive: int = 0) -> dict[str, object]:
+        """Advance the mounted floppy image in A: (0) or B: (1)."""
+
+        return await asyncio.to_thread(swap_floppy, qmp, drive=drive)
 
     @server.tool()
     async def dosbox_break_on_next_exec(enabled: bool = True) -> dict[str, object]:

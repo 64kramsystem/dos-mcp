@@ -18,6 +18,7 @@ from dos_mcp.tools import (
     resume,
     save_state,
     send_keys,
+    swap_floppy,
     type_text,
 )
 
@@ -104,6 +105,15 @@ def test_input_rejects_paused_execution() -> None:
     paused = {"running": False, "emulator-paused": True}
     with pytest.raises(RequestError, match="requires running"):
         send_keys(client(FakeClient(status_response=paused)), ["a"])
+
+
+def test_swap_floppy_validates_and_sends_qmp_command() -> None:
+    fake = FakeClient()
+    assert swap_floppy(client(fake), drive=0) == {"ok": True, "drive": 0}
+    assert fake.calls[-1] == ("swap-floppy", {"drive": 0})
+
+    with pytest.raises(RequestError, match="drive must be"):
+        swap_floppy(client(FakeClient()), drive=2)
 
 
 def test_read_memory_verifies_length() -> None:

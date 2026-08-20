@@ -180,6 +180,15 @@ def reset(client: QmpClient, *, dos_only: bool) -> dict[str, object]:
     return {"ok": True, "dos_only": dos_only}
 
 
+def swap_floppy(client: QmpClient, *, drive: int) -> dict[str, object]:
+    if drive not in (0, 1):
+        raise RequestError("drive must be 0 (A:) or 1 (B:)")
+    with client.session() as session:
+        _require_running(session, "floppy swap")
+        session.execute("swap-floppy", {"drive": drive})
+    return {"ok": True, "drive": drive}
+
+
 def break_on_next_exec(client: QmpClient, *, enabled: bool) -> dict[str, object]:
     return _object(
         client.execute("debug-break-on-exec", {"enabled": enabled}),

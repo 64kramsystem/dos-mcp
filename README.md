@@ -7,6 +7,7 @@ paced keyboard input, bounded memory reads, screenshots, and snapshots.
 ## Tools
 
 - `dosbox_status`, `dosbox_pause`, `dosbox_resume`, and `dosbox_reset`
+- `dosbox_swap_floppy`
 - `dosbox_send_keys`, `dosbox_key_event`, and `dosbox_type_text`
 - `dosbox_break_on_next_exec`
 - `dosbox_read_memory` and `dosbox_capture_screen`
@@ -26,6 +27,8 @@ be torn; `allow_running=true` opts into that explicitly. QMP pause can be
 resumed through `dosbox_resume`; a GDB stop must be continued through GDB.
 DOSBox-X zero-fills unreadable physical addresses, so an unmapped byte cannot be
 distinguished from a real zero through this QMP interface.
+`dosbox_swap_floppy` advances the pre-mounted image list for A: or B: without
+injecting a host-side keyboard shortcut.
 
 Each tool call opens one local QMP session, completes the QMP handshake, performs
 its commands serially, and disconnects. Requests are never retried: a timed-out
