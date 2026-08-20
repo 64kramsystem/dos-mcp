@@ -1,6 +1,6 @@
 [project]
 name = "dos-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "DOSBox-X control tools for DOS malware analysis"
 readme = "README.md"
 requires-python = ">=3.10"
