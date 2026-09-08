@@ -35,10 +35,7 @@ its commands serially, and disconnects. Requests are never retried: a timed-out
 mutation may already have happened, so inspect emulator state before repeating
 it.
 
-This server requires the companion DOSBox-X build made with
-`--enable-remotedebug` and configured with `[dosbox] qmpserver=true`. DOSBox-X
-accepts one QMP client at a time; do not attach another monitor while using this
-MCP server.
+This server requires the [DOSBox-X remote-debug fork](https://github.com/64kramsystem/dosbox-x), built with `--enable-remotedebug` and configured with `[dosbox] qmpserver=true`. DOSBox-X accepts one QMP client at a time; do not attach another monitor while using this MCP server.
 
 ## Configuration
 
