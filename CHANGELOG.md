@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+## 0.1.2
 - Document the maintained DOSBox-X remote-debug fork as the emulator dependency.
 
 ## 0.1.1
