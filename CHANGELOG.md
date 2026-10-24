@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+## 0.1.3
 ### Documentation
 
 - Document the Ghidra 12.2 / JDK 25 companion stack and the disposable DOSBox-X TraceRMI integration test.
