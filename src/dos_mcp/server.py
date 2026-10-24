@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import asyncio
 
-from mcp.server.fastmcp import FastMCP, Image
+from mcp.server.mcpserver import Image, MCPServer
 
 from .config import Settings
 from .qmp import QmpClient
@@ -25,11 +25,11 @@ from .tools import (
 )
 
 
-def create_server(settings: Settings, client: QmpClient | None = None) -> FastMCP:
+def create_server(settings: Settings, client: QmpClient | None = None) -> MCPServer:
     """Create the stdio server without opening the QMP connection."""
 
     qmp = client or QmpClient(settings.qmp_port, settings.qmp_timeout)
-    server = FastMCP("dos-mcp")
+    server = MCPServer("dos-mcp")
 
     @server.tool()
     async def dosbox_status() -> dict[str, object]:

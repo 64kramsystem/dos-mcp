@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+from mcp.server.mcpserver.exceptions import ToolError
 
-class DosMcpError(RuntimeError):
+
+class DosMcpError(ToolError, RuntimeError):
     """Base class for expected DOS MCP failures."""
 
 

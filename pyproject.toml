@@ -5,7 +5,7 @@ description = "DOSBox-X control tools for DOS malware analysis"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "Apache-2.0"
-dependencies = ["mcp==1.28.1"]
+dependencies = ["mcp==2.3.0"]
 
 [project.scripts]
 dos-mcp = "dos_mcp.__main__:main"
