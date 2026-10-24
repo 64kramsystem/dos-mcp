@@ -81,7 +81,9 @@ def release(root: Path, bump: str) -> str:
         f"HEAD:{DEFAULT_BRANCH}",
         f"v{version}",
     )
-    run(root, "uv", "publish")
+    run(root, "uv", "publish",
+        f"dist/dos_mcp-{version}-py3-none-any.whl",
+        f"dist/dos_mcp-{version}.tar.gz")
     return version
 
 
